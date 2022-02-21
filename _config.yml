@@ -1,0 +1,14 @@
+title: Nadia Wadzinski 
+theme: jekyll-theme-minimal
+logo: /images/avatar6.png?raw=true
+description: Seattle software engineer
+blurb: > 
+  <p>
+    Software engineer based in Seattle, specializing in distributed systems architecture, 
+    search, data pipelines, and machine learning. I'm currently a Senior Staff
+    Engineer at <a href="https://www.rover.com/">Rover.com</a>.
+  </p>
+email: nadia.wadzinski@gmail.com
+show_downloads: false
+# google_analytics: false
+linkedin: https://www.linkedin.com/in/nadia-wadzinski-a069ab11a/
