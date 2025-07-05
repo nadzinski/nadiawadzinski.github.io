@@ -4,39 +4,58 @@ title: Nadia Wadzinski
 # About Me
 
 Welcome! I'm a software engineer living in Seattle, Washington, in the
-beautiful Pacific Northwest. I'm currently a Senior Staff Engineer at
-<a href="https://www.rover.com/">Rover.com</a>, where I work on
-Rover's overall software and data architecture.
+beautiful Pacific Northwest. I'm currently the Senior Staff Engineer for the
+Platform Division at <a href="https://www.rover.com/">Rover.com</a>. At the top
+of my company's IC ladder, I'm expected to wear a lot of hats. On any given day
+you might find me doing distributed systems architecture, writing backend code,
+working on big-picture technical strategy, leading major infrastructure projects, 
+diving into really hard bugs, or lately, helping our teams build software faster 
+and better with agentic AI.
 
-For two years previously, I was the tech lead of Rover's Marketplace
-engineering team. The Marketplace Team builds the systems that power Rover's
-core pet services marketplace, using machine learning to help users searching
-on Rover find the perfect sitter or walker for their dog.
+Most recently, I've been diving deep into LLMs and the associated AI tools that
+are revolutionizing our industry. I'm my company's expert on AI-assisted
+development (Claude Code is a personal favorite) and I've been learning how we can
+use these tools effectively and teaching them to engineers across my
+company. I've also been building AI Agents and MCP servers for tasks like
+diagnosing errors from our logs and metrics. It's made me fall in love
+with software and technology all over again and I'm very excited for this new
+world that we're opening up.
 
-I have experience working across the web development stack, but my special area
-of focus is backend architecture and development for distributed systems,
-supporting search, data pipelines, and productionized machine learning models.
 At Rover, I'm fortunate to get to work with some of my favorite languages and
 open source technologies, including Python, Django, Elasticsearch, PostgreSQL,
-Kubernetes, and Kafka.
+and Kubernetes. My deepest areas of expertise are:
 
-I view building software as fundamentally a social process as well as a
-technical one, and I strive to draw together the talents of my team members,
-acting as a facilitator and communicator as well as a technical leader. I've
-particularly enjoyed planning and coordinating complex cross-team projects,
-especially at the intersection of marketplace product requirements, data science,
-and infrastructure. 
+* Distributed Systems Architecture. I'm the kind of engineer who loves an
+  opportunity to explain eventual consistency, the CAP Theorem, at-least-once
+  delivery, distributed consensus, and more. When I got the opportunity to lead
+  a project to redesign my company's http request cycle architecture, we ended
+  up both making the site faster and cutting infrastructure spend in half.
 
-As a former professor, I have a lifelong commitment to mentorship and teaching.
-Guiding other engineers as they learn and grow helps me see familiar concepts
-from new perspectives, and has made me a better engineer and a better
-communicator. At Rover, I recently taught a 12 week class on database internals
-and the Django ORM, and "SQL 101" for nontechnical employees. 
+* Performance engineering. I love spending time in CPU profilers and looking at
+  database query plans. I led an initiative that cut p50 and p95 response times
+  _site wide_ by identifying and fixing our largest performance bottlenecks.
+
+* Databases. I once taught a 12 week class on database internals and the Django ORM,
+  in which I eventually got pretty good at drawing a B-tree on the whiteboard.
+
+* Observability and Incident Management. One of my favorite hats to wear is my Site
+  Reliability Engineer hat. I will happily talk your ear off about the virtues
+  of distributed tracing, OpenTelemetry, and structured wide event data.
+
+I view building software as a social process as much as a technical one, and 
+I strive to draw together the talents of my team members,
+acting as a facilitator and communicator as well as a technical leader. 
+
+As a former professor, I love mentorship and teaching. Guiding other engineers
+as they learn and grow helps me see familiar concepts from new perspectives,
+and has made me a better engineering leader and a better communicator. I
+pride myself on being a lifelong learner: most recently, I've been deepening my
+knowledge of Rust and brushing up on probability and statistics.
 
 I grew up in Glasgow, Scotland, and studied physics and mathematics at the
 University of Cambridge. After a post-college stint as a software engineer at a
-tech startup, I got a PhD in the History of Science from Princeton University,
-and then taught history at <a href="http://www.pugetsound.edu">a Liberal Arts College</a>
-for a year before returning to the tech world. If you're interested in my
-History of Science scholarship, you can read all about it
-<a href="history_of_science.html">here</a>.
+tech startup, I got a PhD in the <a href="history_of_science.html">History of
+Science</a> from Princeton University, and then taught history at a liberal
+arts college before returning to the tech world. Outside work I enjoy travel,
+baking, Texas hold'em poker, reading (history, sci-fi, poetry, russian
+novels...), and single malt scotch.
