@@ -14,9 +14,9 @@ and better with agentic AI.
 
 Most recently, I've been diving deep into LLMs and the associated AI tools that
 are revolutionizing our industry. I'm my company's expert on AI-assisted
-development (Claude Code is a personal favorite) and I've been learning how we can
-use these tools effectively and teaching them to engineers across my
-company. I've also been building AI Agents and MCP servers for tasks like
+software development (Claude Code is a personal favorite) and I've been learning how we can
+use these tools effectively and teaching them to other engineers.
+I've also been building AI Agents and MCP servers for tasks like
 diagnosing errors from our logs and metrics. It's made me fall in love
 with software and technology all over again and I'm very excited for this new
 world that we're opening up.
