@@ -27,16 +27,20 @@ and Kubernetes. My deepest areas of expertise are:
 
 * Distributed Systems Architecture. I'm the kind of engineer who loves an
   opportunity to explain eventual consistency, the CAP Theorem, at-least-once
-  delivery, distributed consensus, and more. When I got the opportunity to lead
-  a project to redesign my company's http request cycle architecture, we ended
-  up both making the site faster and cutting infrastructure spend in half.
+  delivery, distributed consensus, and more. I've had ownership of production
+  systems with thousands of queries per second and hundreds of thousands of
+  active users. When I got the opportunity to lead a project to redesign my
+  company's HTTP request cycle architecture, we ended up both making the site
+  faster and cutting infrastructure spend in half.
 
 * Performance engineering. I love spending time in CPU profilers and looking at
   database query plans. I led an initiative that cut p50 and p95 response times
-  _site wide_ by identifying and fixing our largest performance bottlenecks.
+  by 50% across the entire site by identifying and fixing our largest
+  performance bottlenecks.
 
 * Databases. I once taught a 12 week class on database internals and the Django ORM,
   in which I eventually got pretty good at drawing a B-tree on the whiteboard.
+  Postgres remains my favorite database.
 
 * Observability and Incident Management. One of my favorite hats to wear is my Site
   Reliability Engineer hat. I will happily talk your ear off about the virtues
@@ -57,5 +61,5 @@ University of Cambridge. After a post-college stint as a software engineer at a
 tech startup, I got a PhD in the <a href="history_of_science.html">History of
 Science</a> from Princeton University, and then taught history at a liberal
 arts college before returning to the tech world. Outside work I enjoy travel,
-baking, Texas hold'em poker, reading (history, sci-fi, poetry, russian
+baking, Texas hold'em poker, reading (history, sci-fi, poetry, Russian
 novels...), and single malt scotch.
