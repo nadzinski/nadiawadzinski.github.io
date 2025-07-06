@@ -1,0 +1,44 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Custom styles for better desktop readability */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 1000px;
+    margin: 0 auto;
+  }
+  
+  section {
+    width: 650px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  header {
+    width: 300px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+  
+  li {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
