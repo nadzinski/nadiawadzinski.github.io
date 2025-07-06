@@ -40,9 +40,12 @@ and Kubernetes. My deepest areas of expertise include:
   Django ORM, during which I got pretty good at drawing B-trees on the
   whiteboard. Postgres remains my favorite database.
 
-* **Observability and Incident Management.** One of my favorite hats to wear is my Site
-  Reliability Engineer hat. I'll happily talk your ear off about the virtues
-  of distributed tracing, OpenTelemetry, and structured wide event data.
+* **Observability and Incident Management.** One of my favorite hats to wear is
+  my Site Reliability Engineer hat. I'll happily talk your ear off about the
+  virtues of distributed tracing, OpenTelemetry, and structured wide event
+  data. I am fascinated by how complex systems fail and I think a good
+  blameless incident postmortem is one of the most useful meetings an
+  engineering team can have.
 
 I view building software as a social process as much as a technical one, and I
 strive to bring out the best in my teammates, acting as a facilitator
@@ -52,7 +55,7 @@ work. I often say that every staff engineer should be able to think like a
 manager, and I always keep the big-picture business impact in mind, even when
 I’m solving problems deep in the code.
 
-As a former professor, I love mentorship and teaching. Guiding other engineers
+As a former professor, I'm passionate about mentorship and teaching. Guiding other engineers
 as they learn and grow helps me see familiar concepts from new perspectives,
 and it's made me a better engineering leader and a better communicator. I
 pride myself on being a lifelong learner. Most recently, I've been deepening my
