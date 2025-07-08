@@ -43,9 +43,9 @@ and Kubernetes. My deepest areas of expertise include:
 * **Observability and Incident Management.** One of my favorite hats to wear is
   my Site Reliability Engineer hat. I'll happily talk your ear off about the
   virtues of distributed tracing, OpenTelemetry, and structured wide event
-  data. I am fascinated by how complex systems fail and I think a good
-  blameless incident postmortem is one of the most useful meetings an
-  engineering team can have.
+  data. I like looking at how complex systems fail and thinking about what we can
+  do to make them more resilient. I believe a good blameless incident postmortem
+  is one of the most useful meetings an engineering team can have.
 
 I view building software as a social process as much as a technical one, and I
 strive to bring out the best in my teammates, acting as a facilitator
