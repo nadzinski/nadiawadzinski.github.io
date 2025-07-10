@@ -66,5 +66,5 @@ University of Cambridge. After a stint as an engineer at a
 tech startup, I earned a PhD in the <a href="history_of_science.html">History of
 Science</a> from Princeton University, then taught history at a liberal
 arts college before returning to the tech world. Outside work, I enjoy travel,
-baking, Texas Hold’em poker, reading (history, sci-fi, poetry, Russian
-novels...), and single malt Scotch.
+baking, Texas Hold’em poker, reading (history, sci-fi, spy novels, poetry, Russian
+literature...), and single malt Scotch.
