@@ -3,8 +3,8 @@ title: Nadia Wadzinski
 ---
 # About Me
 
-Welcome! I'm a software engineer living in Seattle, Washington, in the
-beautiful Pacific Northwest. I'm currently the Senior Staff Engineer for the
+I did everything I could to avoid becoming a software engineer, but it suited
+me just a little too well. I'm currently the Senior Staff Engineer for the
 Platform Division at <a href="https://www.rover.com/">Rover.com</a>. At the top
 of my company's IC ladder, I wear a lot of hats. On any given day
 you might find me doing distributed systems architecture, writing backend code,
