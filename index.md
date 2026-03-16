@@ -9,20 +9,25 @@ Platform Division at <a href="https://www.rover.com/">Rover.com</a>. At the top
 of my company's IC ladder, I wear a lot of hats. On any given day
 you might find me doing distributed systems architecture, writing backend code,
 working on big-picture technical strategy, leading major infrastructure projects, 
-diving into really hard bugs, or lately, helping our teams build software faster 
+diving into really hard bugs, or helping our teams build software faster 
 and better with agentic AI.
 
-Most recently, I've been diving deep into LLMs and the associated AI tools that are
-revolutionizing our industry. I'm my company's expert on AI-assisted software
-development (Claude Code is a personal favorite) and I've been learning how we
-can use these tools effectively and teaching them to other engineers. I've also
-been building AI Agents and MCP servers for tasks like diagnosing errors from
-logs and metrics. It’s made me fall in love with software and technology all
-over again, and I’m incredibly excited about the new world we’re opening up.
-
-At Rover, I'm fortunate to get to work with some of my favorite languages and
+At Rover, I’m fortunate to get to work with some of my favorite languages and
 open source technologies, including Python, Django, Elasticsearch, PostgreSQL,
 and Kubernetes. My deepest areas of expertise include:
+
+* **AI Engineering.** I'm Rover's technical leader on all things AI and LLMs,
+  working with our executive team to shape how we integrate them into our product
+  and our development workflows. I led the rollout of Claude Code across our
+  engineering org, growing adoption from zero to over 80% of our engineers.
+  I've also built custom tooling for AI-native development, including an agent
+  orchestration framework and MCP servers. On my own time, I've been going
+  deeper, because I like to learn the stack one or two levels
+  below where I usually operate. I rebuilt the Qwen3 LLM architecture from
+  scratch in PyTorch to really understand how transformers work from the inside,
+  getting into the details of the attention mechanism, KV-caching, and
+  speculative decoding. I also wrote my own small CLI coding agent to learn how
+  tool use and subagent orchestration fit together.
 
 * **Distributed Systems Architecture.** I'm the kind of engineer who jumps at the
   chance to explain eventual consistency, the CAP Theorem, at-least-once
@@ -57,9 +62,7 @@ I’m solving problems deep in the code.
 
 As a former professor, I'm passionate about mentorship and teaching. Guiding other engineers
 as they learn and grow helps me see familiar concepts from new perspectives,
-and it's made me a better engineering leader and a better communicator. I
-pride myself on being a lifelong learner. Most recently, I've been deepening my
-knowledge of Rust and brushing up on probability and statistics.
+and it's made me a better engineering leader and a better communicator.
 
 I grew up in Glasgow, Scotland, and studied physics and mathematics at the
 University of Cambridge. After a stint as an engineer at a
