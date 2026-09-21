@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script id="site-config" type="application/json">{"mode":"static","models":["qwen-3-dense-no-kv"]}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the real Qwen3 model, from tokens to attention heads, matrices, and Python code.">
+  <title>The annotated LLM</title>
+  <script>
+    // Reloads restart the reader at the introduction. Back/forward keep their
+    // normal scroll restoration; an explicit fragment still takes precedence.
+    if (!location.hash && performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+      history.scrollRestoration = 'manual';
+      window.addEventListener('pageshow', () => {
+        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+      }, {once: true});
+      // Keep restoration disabled while asynchronous content fills the page.
+      window.addEventListener('pagehide', () => { history.scrollRestoration = 'auto'; }, {once: true});
+    }
+  </script>
+  <link rel="icon" href="/annotated-llm/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/annotated-llm/style.css">
+  <script type="module" src="/annotated-llm/app.js"></script>
+</head>
+<body data-app-state="loading">
+  <header class="masthead"><a href="/annotated-llm/" class="wordmark"><span class="brand-mark">q<span>·</span>k</span> The annotated LLM</a><label class="model-picker" hidden>Model <select id="model-select" aria-label="Choose a model"><option>Loading…</option></select><span id="model-switch-status" role="status"></span></label></header>
+  <p id="startup-status" role="status">Loading model…</p>
+  <main aria-busy="true" inert>
+    <section class="intro"><h1 data-copy="page.title">Inside Qwen3</h1><div class="intro-copy" data-copy="page.introduction" data-copy-paragraphs><p>The diagram shows how Qwen3 processes tokens, with links to the Python implementation.</p></div></section>
+    <section class="workspace" aria-label="Interactive model explorer">
+      <div class="model-summary"><strong class="model-summary-name" id="model-summary-name"></strong><div class="model-facts" id="model-facts" aria-label="Model dimensions"><span>Reading the model…</span></div><p class="matrix-size-note" data-copy="legend.note">Matrix sizes are schematic; see labels for actual dimensions.</p></div>
+      <div class="toolbar"><nav id="breadcrumbs" aria-label="Model location"><button data-action="home">Model Overview</button></nav><div class="toolbar-actions"><span id="text-save-status" role="status"></span><button id="up" title="Go up one level (Escape)" disabled>↑ Up a level</button></div></div>
+      <div class="work-area">
+        <div class="canvas-wrap" id="canvas-wrap">
+          <div class="canvas-top">
+            <div class="canvas-caption"><span id="view-number">01 / MODEL OVERVIEW</span></div>
+            <div class="legend" aria-label="Diagram legend"><div><i class="legend-box"></i> <span data-copy="legend.operation">An operation or a whole block</span></div><div><i class="legend-grid"></i> <span data-copy="legend.weights">Learned weights · fixed</span></div><div><i class="legend-grid activation"></i> <span data-copy="legend.activations">Activations · depend on input</span></div></div>
+          </div>
+          <div class="diagram-surface">
+          <svg id="canvas" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Qwen3 model. Click an element to look inside. Pinch inward or use the breadcrumbs or Escape to return." tabindex="0"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="diagram-arrowhead" d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7e928d" stroke-width="1.2"/></marker><marker id="return-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="diagram-arrowhead" d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7d9fa2" stroke-width="1.2"/></marker></defs><g id="world"></g></svg>
+          <div class="canvas-bottom"><span class="gesture-hint">Click to look inside <span>·</span> Pinch inward or Esc to return</span></div>
+          <div id="minimap" aria-label="Model overview"></div>
+          <div id="canvas-error" class="canvas-error" hidden></div>
+          <div id="node-tooltip" class="node-tooltip" role="tooltip" hidden></div>
+          </div>
+        </div>
+        <aside class="inspector" aria-live="polite"><div class="eyebrow" id="selection-kind">MODEL OVERVIEW</div><h2 id="selection-title">Generating the next token</h2><div id="selection-description" data-copy-blocks>The whole context travels through the model. At the end, the last position’s scores are used to choose one new token.</div><div id="selection-details"></div><div id="selection-actions"></div><details class="sidebar-note"><summary>Note on the code: Python indices</summary><p id="notation-description"></p></details></aside>
+      </div>
+      <div class="context-bar"><label for="example-select">An example context</label><form id="prompt-form" hidden><input id="prompt" value="In my beginning is my" maxlength="512" autocomplete="off" aria-label="Example text to tokenize"><button type="submit">Tokenize →</button></form><select id="example-select" aria-label="Choose an example context"></select><div id="tokens" class="tokens" aria-live="polite"></div><div id="example-next" class="example-next" hidden title="Illustrative next token: ‘ end’."><span>example next →</span><span class="token">␣end</span></div><span id="token-count" tabindex="0" title="N is the number of input tokens (sequence length), called sequence_len in the attention code."></span></div>
+      <section class="code-drawer" id="code-drawer"><button class="code-handle" id="code-toggle" aria-expanded="false" aria-controls="code-content"><span><span class="code-glyph">&lt;/&gt;</span> Python implementation <span id="code-file">model.py</span></span><span id="code-chevron">⌄</span></button><div id="code-content" hidden><div class="code-heading"><div><strong id="code-symbol"></strong><p id="code-note"></p></div><label><input id="code-wrap" type="checkbox"> Wrap lines</label><label><input id="code-context" type="checkbox"> Show whole file</label><button id="code-close" aria-label="Close code drawer">×</button></div><pre id="source-code" tabindex="0"></pre></div></section>
+    </section>
+  </main>
+  <aside id="inline-note" class="inline-note" role="tooltip" hidden><div id="inline-note-text"></div></aside>
+  
+  <dialog id="weight-dialog" aria-labelledby="weight-title"><div class="weight-header"><div><div class="eyebrow">THE WEIGHT MICROSCOPE</div><h2 id="weight-title">Learned weights</h2></div><button id="weight-close" class="icon-button" aria-label="Close weight microscope">×</button></div><p id="weight-description"></p><div id="weight-status" role="status"></div><div id="weight-body" hidden><div class="weight-meta" id="weight-meta"></div><div class="weight-views"><section><h3>The whole matrix <small>sampled coordinates</small></h3><p class="small-note" id="weight-proportions"></p><div class="weight-plot" id="overview-plot">
+        <div class="plot-column-label" id="overview-columns"></div>
+        <div class="plot-row-label" id="overview-rows"></div>
+        <div class="plot-row-ticks" id="overview-row-ticks"></div>
+        <canvas id="weight-overview" width="384" height="384" aria-label="Sampled overview of real weights. Click to inspect a region, or use the row and column fields."></canvas>
+        <div class="plot-column-ticks" id="overview-column-ticks"></div>
+      </div><p class="small-note" id="window-marker-note"></p><p class="small-note" id="weight-overview-hint">Click a region to inspect its individual values. Colors use the sampled range; values beyond it saturate.</p></section><section class="patch-section"><h3><span id="patch-title">A 16 × 16 window</span><small id="patch-range"></small></h3><div class="patch-controls"><label>Row <input id="weight-row" type="number" min="0" value="0"></label><label>Column <input id="weight-col" type="number" min="0" value="0"></label><button id="weight-go">Inspect →</button></div><label class="sample-patch-picker" hidden>Saved patch <select id="weight-patch-select" aria-label="Choose a saved weight patch"></select></label><div class="weight-plot" id="patch-plot">
+        <div class="plot-column-label" id="patch-columns"></div>
+        <div class="plot-row-label" id="patch-rows"></div>
+        <div class="plot-row-ticks" id="patch-row-ticks"></div>
+        <canvas id="weight-patch" width="480" height="384" tabindex="0" aria-label="A window of real parameter values. Use the arrow keys to select a cell."></canvas>
+        <div class="plot-column-ticks" id="patch-column-ticks"></div>
+      </div><output id="cell-value">Hover or use the arrow keys to inspect a value.</output></section></div><div class="weight-scale"><span id="scale-min"></span><div></div><span>0</span><div></div><span id="scale-max"></span><p>Negative <span>←</span> weight value <span>→</span> Positive</p></div><p class="small-note" id="weight-layout"></p></div></dialog>
+</body>
+</html>
