@@ -1240,7 +1240,7 @@ function select(spec){
   mobile?.clearReadout();mobile?.selectionChanged(spec);
   state.selected=spec;
   $('.inspector').scrollTop=0;
-  setCopyText($('#selection-kind'),spec.kind||'OPERATION');setCopyText($('#selection-title'),spec.title);
+  setCopyText($('#selection-title'),spec.title);
   setCopyText($('#selection-description'),spec.description||'');
   const learnedShape=spec.outputHead?`${fmt(d())} × ${h()}`:spec.weight?matrixShape(spec.weight,state.model.parameters[spec.weight].length===3&&(/\.W_[qkv]$/.test(spec.weight))):'';
   const kvPair=spec.parameterScope==='kv-pair';
