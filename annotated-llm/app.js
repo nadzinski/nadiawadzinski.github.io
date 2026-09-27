@@ -610,9 +610,10 @@ function headDiagram() {
   letters.forEach((letter,i)=>{
     const center=centers[i],y=center-50,head=letter==='q'?state.head:kvHead(),weight=param(`attention.W_${letter}`);
     out+=flow(line(149,center,174,center),'normalized','head-input',`weight-${letter}`);
-    out+=matrix(186,y,80,100,`W_${letter}`,matrixShape(weight,true),{key:`weight-${letter}`,title:copy("title.projection-projection-weights", {projection:letter.toUpperCase()}),kind:copy("kind.learned-matrix"),source:letter,description:copy("description.multiply-the-full-input-by-this-learned-matrix-to-produce-value1", {value1:letter==='q'?'queries':letter==='k'?'keys':'values', value2:letter==='q'?`This matrix belongs to query head ${head}.`:`This matrix belongs to shared key/value head ${head}.`}),input,output:shape,weight,weightHead:head});
+    const description=isOriginalQwen?copy(`description.${letter}-projection-weights`):copy("description.multiply-the-full-input-by-this-learned-matrix-to-produce-value1", {value1:letter==='q'?'queries':letter==='k'?'keys':'values', value2:letter==='q'?`This matrix belongs to query head ${head}.`:`This matrix belongs to shared key/value head ${head}.`});
+    out+=matrix(186,y,80,100,`W_${letter}`,matrixShape(weight,true),{key:`weight-${letter}`,title:copy("title.projection-projection-weights", {projection:letter.toUpperCase()}),kind:copy("kind.learned-matrix"),source:letter,description,input,output:shape,weight,weightHead:head});
     out+=text(292,center+9,'×',27)+flow(line(312,center,328,center),letter,`weight-${letter}`,`activation-${letter}`);
-    out+=matrix(340,center-36,64,72,letter.toUpperCase(),shape,{key:`activation-${letter}`,axes:tokenAxes(({q:'query',k:'key',v:'value'})[letter]+' coordinate'),title:copy("title.projection-activations", {projection:letter.toUpperCase()}),kind:copy("kind.activations"),source:letter,activation:true,rows,labelKind:'diagram-math',description:copy("description.these-value1-depend-on-the-input-text-each-token-has-a-headdim-di", {value1:letter==='q'?'queries':letter==='k'?'keys':'values', headDim:h()}),input:shape,note:copy("note.schematic-grid-execution-playback-will-supply-activation-values")});
+    out+=matrix(340,center-36,64,72,letter.toUpperCase(),shape,{key:`activation-${letter}`,axes:tokenAxes(({q:'query',k:'key',v:'value'})[letter]+' coordinate'),title:isOriginalQwen?copy(`title.${letter}-vectors`):copy("title.projection-activations", {projection:letter.toUpperCase()}),kind:copy("kind.activations"),source:letter,activation:true,rows,labelKind:'diagram-math',description:isOriginalQwen?copy(`description.${letter}-vectors`):copy("description.these-value1-depend-on-the-input-text-each-token-has-a-headdim-di", {value1:letter==='q'?'queries':letter==='k'?'keys':'values', headDim:h()}),input:shape,note:copy("note.schematic-grid-execution-playback-will-supply-activation-values")});
     if(letter!=='v') {
       out+=flow(line(416,center,438,center),letter,`activation-${letter}`,`${letter}-norm`);
       out+=operation(450,center-33,66,66,copy("label.rmsnorm"),{key:`${letter}-norm`,kind:copy("kind.normalization"),source:'qk_norm',description:copy("description.normalize-each-query-or-key-vector-along-its-head-dimension-value"),input:shape,output:shape,weight:param(`attention.${letter}_norm.weight`),fontSize:20,labelText:copy("label.rms-norm-lines")});
@@ -1236,6 +1237,15 @@ function parameterDetails(spec){
     +(stats.groups.length?`<details class="parameter-breakdown"${scope==='kv-pair'?' open':''}><summary>Where the parameters are</summary><dl>${stats.groups.map(g=>`<div><dt>${esc(g.label)}</dt><dd>${fmt(g.count)}</dd></div>`).join('')}</dl>${stats.note?`<p>${esc(stats.note)}</p>`:''}</details>`:stats.note?`<p class="detail-axes">${esc(stats.note)}</p>`:'')
     +'</section>';
 }
+function scoreIndexNote(spec){
+  if(state.level!=='score'||!spec.key?.startsWith('score-'))return '';
+  const query=spec.key==='score-query',key=spec.key==='score-key';
+  const index=query?`queries[${state.head}, ${state.scoreRow}, :]`
+    :key?`keys[${state.head}, ${state.scoreCol}, :]`
+    :`scores[${state.head}, ${state.scoreRow}, ${state.scoreCol}]`;
+  const heads=query?'':isGPT2()?'Each head has its own query and key projections. ':'Key heads have been repeated to match the query heads. ';
+  return `<p class="detail-note">In Python: <code>${index}</code>. ${heads}Coordinates 1–${h()} correspond to Python indices 0–${h()-1}.</p><p class="detail-note">Choose another score in the matrix above. With the keyboard, use the arrow keys and Enter.</p>`;
+}
 function select(spec){
   mobile?.clearReadout();mobile?.selectionChanged(spec);
   state.selected=spec;
@@ -1249,7 +1259,7 @@ function select(spec){
     return detailShape(letter==='k'?'SHARED KEY MATRIX':'SHARED VALUE MATRIX',matrixShape(weight,true),parameterAxes(weight,false,C()));
   }).join(''):spec.weight?detailShape(spec.outputHead?'LEARNED MATRIX SLICE':'LEARNED PARAMETER',learnedShape,parameterAxes(spec.weight,!!spec.outputHead,C())):'';
   $('#selection-details').innerHTML=detailShape('INPUT',spec.input,detailAxes(spec,'input'))+detailShape('OUTPUT',spec.output,detailAxes(spec,'output'))+learnedDetails+parameterDetails(spec)+(spec.note&&!isEmptyCopy(spec.note)?`<p class="detail-note" ${copyAttributes(spec.note)}>${richText(spec.note)}</p>`:'')+vocabularyNote(spec)
-    +(spec.key?.startsWith('score-')&&state.level==='score'?`<p class="detail-note">In Python: <code>scores[${state.head}, ${state.scoreRow}, ${state.scoreCol}]</code>. ${isGPT2()?'Each head has its own query and key projections.':'Key heads have been repeated to match the query heads.'} Coordinates 1–${h()} correspond to Python indices 0–${h()-1}.</p><p class="detail-note">Choose another score in the matrix above. With the keyboard, use the arrow keys and Enter.</p>`:'');
+    +scoreIndexNote(spec);
   setCopyText($('#notation-description'),copy("explanation.notation",{positions:positionConvention()}));
   $('#selection-actions').innerHTML=(spec.weight&&state.model.weight_inspection!==false?`<button class="primary" id="inspect-weights">⌕ ${kvPair?'Inspect key weights':'Inspect real weights'}</button>`:'')+`<button id="selection-code"><span class="code-glyph">&lt;/&gt;</span> See the Python</button>`+(state.level==='head'?`<button id="previous-head" ${state.head===0?'disabled':''}>← Previous head</button><button id="next-head" ${state.head===headCount()-1?'disabled':''}>Next head →</button>`:'');
   $('#selection-code').onclick=()=>openCode(spec.source||'model');
